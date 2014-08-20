@@ -1,8 +1,8 @@
-class ActiveadminSettings::AdminUsersController < ApplicationController
+class ActiveadminSettings::UsersController < ApplicationController
   before_filter :authenticate_admin_user!
 
   def update
-    @object = AdminUser.find(params[:id])
+    @object = User.find(params[:id])
     if @object.update_attributes(permitted_params[:admin_user])
       render :text => "ok"
     else
@@ -11,7 +11,7 @@ class ActiveadminSettings::AdminUsersController < ApplicationController
   end
 
   def create
-    @object = AdminUser.new(permitted_params[:admin_user])
+    @object = User.new(permitted_params[:admin_user])
     if @object.save
       render :partial => "admin/settings/admin", :locals => {:admin => @object}, :layout => false
     else
@@ -20,7 +20,7 @@ class ActiveadminSettings::AdminUsersController < ApplicationController
   end
 
   def destroy
-    @object = AdminUser.find(params[:id])
+    @object = User.find(params[:id])
     @object.destroy
     redirect_to "/admin/settings#admins"
   end
@@ -32,5 +32,5 @@ class ActiveadminSettings::AdminUsersController < ApplicationController
     else
       params.permit admin_user: [:email, :password, :password_confirmation]
     end
-  end 
+  end
 end

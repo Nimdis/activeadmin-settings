@@ -57,7 +57,7 @@ module ActiveadminSettings
 
     def value
       val = respond_to?(type) ? send(type).to_s : send(:string).to_s
-      val = default_value if val.empty?
+      val = default_value(locale) if val.empty?
       val.html_safe
     end
 
@@ -80,7 +80,7 @@ module ActiveadminSettings
       include SettingMethods
 
       def self.value(name, locale)
-        self.where(:name => name, :locale => (locale || I18n.locale)).first_or_initialize.value
+        where(:name => name, :locale => (locale || I18n.locale)).first_or_initialize.value
       end
     end
   else
@@ -92,7 +92,7 @@ module ActiveadminSettings
       end
 
       def self.value(name, locale)
-        self.where(:name => name, :locale => (locale || I18n.locale)).first_or_initialize.value
+        where(:name => name, :locale => (locale || I18n.locale)).first_or_initialize.value
       end
     end
   end

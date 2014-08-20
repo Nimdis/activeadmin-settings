@@ -81,7 +81,7 @@ Here is an example of Gemfile with a support of 3.x version:
 
 ### Configuration
 
-After installation you should find a new **Settings** menu in the admin. If no configuration found in `config/activeadmin_settings.yml` only *Admins* tab is shown. *Admin* tab implements basic functionality of editing *AdminUser* objects.
+After installation you should find a new **Settings** menu in the admin. If no configuration found in `config/activeadmin_settings.yml` only *Admins* tab is shown. *Admin* tab implements basic functionality of editing *User* objects.
 
 To add some settings go to `config/activeadmin_settings.yml`. Settings are splitted into groups, each setting name concidered to be uniq, e.g.:
 

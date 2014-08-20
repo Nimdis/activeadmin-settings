@@ -4,7 +4,7 @@ namespace :activeadmin do
   namespace :settings do
     desc "Create default admin user"
     task :create_admin => :environment do
-      AdminUser.create :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password'
+      User.create :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password'
       puts "New admin user created:
               email: admin@example.com
               password: password"
